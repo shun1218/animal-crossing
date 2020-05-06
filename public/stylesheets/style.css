@@ -6,6 +6,10 @@ a {
   color: #00b7ff;
 }
 
+.ad {
+  padding: 0 30%;
+}
+
 .getted {
   background-color: #bdf4d8 !important;
 }

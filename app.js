@@ -53,6 +53,7 @@ async function(token, tokenSecret, profile, done) {
   }
   if (!userData) {
     let result = await dbName.collection('users').insertOne({'user_id': user.id, 'hemisphere': 'northern', 'bugs': [], 'fishes': []});
+    user.hemisphere = 'northern';
     user.bugs = [];
     user.fishes = [];
   }

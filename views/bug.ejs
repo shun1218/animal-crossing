@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155198768-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-155198768-4');
+    </script>
     <title><%= title %></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -52,7 +61,7 @@
                           <% if (i % 6 == 1) { %>
                             <tr class="text-center">
                           <% } %>
-                          <% let month = user.hemisphere === 'northern' ? i : ((i + 6) % 12 === 0 ? 1 : (i + 6) % 12); %>
+                          <% let month = (!user || user.hemisphere === 'northern') ? i : ((i + 6) % 12 === 0 ? 1 : (i + 6) % 12); %>
                           <% if (bug.month.indexOf(month) >= 0) { %>
                             <td class="is-positive"><%= i %></td>
                           <% } else { %>
