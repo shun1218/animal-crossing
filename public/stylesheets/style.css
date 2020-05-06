@@ -1,0 +1,52 @@
+body {
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+.getted {
+  background-color: #bdf4d8 !important;
+}
+
+.hover-none tr:hover {
+  background-color: transparent !important;
+}
+
+.is-positive {
+  background-color: #528161 !important;
+  color: #fff;
+}
+
+.margin-row {
+  margin: 1rem 0;
+}
+
+.message {
+  color: #bd3d33;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.navbar {
+  background-color: #89caa2 !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+  height: 56px;
+}
+
+.navbar-brand {
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.success-message {
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.table-text {
+  font-size: 1.2rem;
+}
+
+.twitter-icon {
+  height: 80%;
+}

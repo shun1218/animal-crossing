@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="wrapper">
+      <%- include('./_header') %>
+      <div class="content container-fluid">
+        <div class="row">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-8 col-9 message text-center" id="message"></div>
+          <div class="col-lg-2 col-3 text-right margin-row">
+            <% if (user) { %>
+              <button type="button" class="btn btn-outline-primary" onclick="updateFishes()">保存</button>
+            <% } else { %>
+              <button type="button" class="btn btn-outline-secondary" disabled>保存</button>
+            <% } %>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10 col-12">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center" scope="col">#</th>
+                  <th class="text-center" scope="col">名前</th>
+                  <th class="text-center" scope="col">売値</th>
+                  <th class="text-center" scope="col">場所</th>
+                  <th class="text-center" scope="col">魚影</th>
+                  <th class="text-center" scope="col">時期</th>
+                  <th class="text-center" scope="col">時間帯</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% fishes.forEach(fish => { %>
+                  <tr id="row<%= fish.fish_id %>" onclick="addFishes(<%= fish.fish_id %>)">
+                    <td class="align-middle table-text"><%= fish.fish_id %></td>
+                    <td class="align-middle table-text"><%= fish.name %></td>
+                    <td class="align-middle table-text"><%= fish.value %></td>
+                    <td class="align-middle table-text">
+                      <% fish.location.forEach(loc => { %>
+                        <%= loc %>
+                      <% }); %>
+                    </td>
+                    <td class="align-middle table-text"><%= fish.shadow_size %></td>
+                    <td class="align-middle">
+                      <table class="table table-sm hover-none">
+                        <% for (let i = 1; i < 13; i++) { %>
+                          <% if (i % 6 == 1) { %>
+                            <tr class="text-center">
+                          <% } %>
+                          <% let month = user.hemisphere === 'northern' ? i : ((i + 6) % 12 === 0 ? 1 : (i + 6) % 12); %>
+                          <% if (fish.month.indexOf(month) >= 0) { %>
+                            <td class="is-positive"><%= i %></td>
+                          <% } else { %>
+                            <td><%= i %></td>
+                          <% } %>
+                          <% if (i % 6 == 0) { %>
+                            </tr>
+                          <% } %>
+                        <% } %>
+                      </table>
+                    </td>
+                    <td>
+                      <svg id="svg<%= fish.fish_id %>" width="100%" height="50%" onload="displayTime(<%= fish.fish_id %>, [<%= fish.time %>])"></svg>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+      let fishes = [<%= user ? user.fishes : null %>];
+
+      $(document).ready(function () {
+        fishes.forEach(fish => {
+          let row = document.getElementById('row' + String(fish));
+          row.classList.add('getted');
+        });
+      });
+
+      function addFishes(fishId) {
+        let row = document.getElementById('row' + String(fishId));
+        if (fishes.indexOf(fishId) < 0) {
+          fishes.push(fishId);
+          row.classList.add('getted');
+        } else {
+          fishes = fishes.filter(n => n !== fishId);
+          row.classList.remove('getted');
+        }
+      }
+
+      function updateFishes() {
+        $.ajax({
+          url: '/fish/update',
+          type: 'POST',
+          data: {
+            'fishes': fishes
+          }
+        }).then((data) => {
+          let tag = document.getElementById('message');
+          tag.innerHTML = data.message;
+          tag.classList.add('success-message');
+        }).catch((error) => {
+          let tag = document.getElementById('message');
+          tag.innerHTML = error.responseJSON.error;
+        });
+      }
+
+      function displayTime(num, times) {
+        let svgTag = 'svg' + String(num);
+        let svg = document.getElementById(svgTag);
+        let initX = 20;
+        let initY = Math.round($('#' + svgTag).height() / 2);;
+        let positionX = initX;
+        let positionY = initY;
+        let offsetX = Math.round(($('#' + svgTag).width() - 20) / 25);
+        let offsetY = 0;
+        let smallScale = 5;
+        let bigScale = 10;
+        let bigScaleAt = 6;
+        let count = 25;
+
+        let polylines = [];
+        polylines.push([positionX, positionY]);
+        for(let i = 0; i < count; i++){
+          offsetY = i % bigScaleAt ? smallScale : bigScale;
+          polylines.push([positionX, positionY]);
+          positionY -= offsetY
+          polylines.push([positionX, positionY]);
+          positionY += offsetY
+          polylines.push([positionX, positionY]);
+          positionX += offsetX;
+        }
+        let polylineTag = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+        let numberLineId = 'numberLine' + String(num);
+        polylineTag.setAttribute('id', numberLineId);
+        polylineTag.setAttribute('stroke', 'black');
+        polylineTag.setAttribute('fill', 'none');
+        svg.appendChild(polylineTag);
+
+        let point = svg.createSVGPoint();
+        polylines.forEach(function(n){
+          point.x = n[0];
+          point.y = n[1];
+          document.getElementById(numberLineId).points.appendItem(point);
+        });
+
+        let colorPolylines = [];
+        let colorPolyline = [];
+        positionX = initX;
+        positionY = initY;
+        colorPolyline.push([positionX, positionY]);
+        for(let i = 0; i < count; i++){
+          if (times.indexOf(i) >= 0) {
+            colorPolyline.push([positionX, positionY - 2.5]);
+            if (times.indexOf(i + 1) < 0) {
+              colorPolyline.push([positionX + offsetX, positionY - 2.5]);
+              colorPolylines.push(colorPolyline);
+              colorPolyline = [];
+            }
+          }
+          positionX += offsetX;
+        }
+        colorPolylines.push(colorPolyline);
+
+        colorPolylines.forEach((value, index) => {
+          let colorPolylineTag= document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+          let lineId = 'line' + String(num) + String(index);
+          colorPolylineTag.setAttribute('id', lineId);
+          colorPolylineTag.setAttribute('stroke', '#528161');
+          colorPolylineTag.setAttribute('stroke-width', '5px');
+          colorPolylineTag.setAttribute('fill', 'none');
+          svg.appendChild(colorPolylineTag);
+
+          let point = svg.createSVGPoint();
+          value.forEach(function(n){
+            point.x = n[0];
+            point.y = n[1];
+            document.getElementById(lineId).points.appendItem(point);
+          });
+        });
+        
+        let texts = [];
+        let adjustNumY = 2;
+        let displayNum = 0;
+        for(let i = 0; i < count; i += bigScaleAt){
+          let adjustNumX = displayNum.toString().length * 5;
+          texts.push([displayNum, initX + offsetX * i - adjustNumX, initY - bigScale - adjustNumY]);
+          displayNum += bigScaleAt;
+        }
+        texts.forEach(function(x){
+          let t= document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          t.setAttribute('id', 'text');
+          t.textContent = x[0];
+          t.setAttribute('x', x[1]);
+          t.setAttribute('y', x[2]);
+          svg.appendChild(t);
+        });
+      };
+    </script>
+  </body>
+</html>
