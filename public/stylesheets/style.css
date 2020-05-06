@@ -54,3 +54,9 @@ a {
 .twitter-icon {
   height: 80%;
 }
+
+@media (max-width: 1200px) {
+  .ad {
+    padding: 0 20%;
+  }
+}
