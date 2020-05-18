@@ -20,6 +20,7 @@ const connectOption = {
 let indexRouter = require('./routes/index');
 let bugRouter = require('./routes/bug');
 let fishRouter = require('./routes/fish');
+let fossilRouter = require('./routes/fossil');
 let logoutRouter = require('./routes/logout');
 
 var app = express();
@@ -50,12 +51,17 @@ async function(token, tokenSecret, profile, done) {
     user.hemisphere = userData.hemisphere;
     user.bugs = userData.bugs;
     user.fishes = userData.fishes;
+    if (!userData.fossils) {
+      userData.fossils = [];
+    }
+    user.fossils = userData.fossils;
   }
   if (!userData) {
-    let result = await dbName.collection('users').insertOne({'user_id': user.id, 'hemisphere': 'northern', 'bugs': [], 'fishes': []});
+    let result = await dbName.collection('users').insertOne({'user_id': user.id, 'hemisphere': 'northern', 'bugs': [], 'fishes': [], 'fossils': []});
     user.hemisphere = 'northern';
     user.bugs = [];
     user.fishes = [];
+    user.fossils = [];
   }
   return done(null, user);
 }
@@ -63,7 +69,7 @@ async function(token, tokenSecret, profile, done) {
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  resave: true,
+  resave: false,
   saveUninitialized: false,
   cookie: {
     path: '/',
@@ -85,6 +91,7 @@ passport.deserializeUser(function(user, done) {
 app.use('/', indexRouter);
 app.use('/bug', bugRouter);
 app.use('/fish', fishRouter);
+app.use('/fossil', fossilRouter);
 app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler
