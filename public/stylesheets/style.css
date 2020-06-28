@@ -11,10 +11,6 @@ table {
   border: tomato;
 }
 
-.ad {
-  padding: 0 30%;
-}
-
 .background {
   background-color: rgba(0, 0, 0, 0.12);
 }
@@ -71,6 +67,12 @@ table {
 
 .twitter-icon {
   height: 80%;
+}
+
+@media (min-width: 1200px) {
+  .ad {
+    padding: 0 30%;
+  }
 }
 
 @media (max-width: 1200px) {
