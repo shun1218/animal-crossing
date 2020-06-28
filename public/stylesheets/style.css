@@ -59,6 +59,10 @@ table {
   font-size: 1rem;
 }
 
+.table-timezone {
+  min-width: 300px;
+}
+
 .table-subheading-text {
   background-color: #7f8c8d !important;
   color: #fff;
