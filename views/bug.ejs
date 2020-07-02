@@ -33,37 +33,39 @@
         </div>
         <div class="row">
           <div class="col-lg-1"></div>
-          <div class="col-lg-10 col-12 table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th class="text-center" scope="col">#</th>
-                  <th class="text-center" scope="col">名前</th>
-                  <th class="text-center" scope="col">売値</th>
-                  <th class="text-center" scope="col">場所</th>
-                  <th class="text-center" scope="col">時期</th>
-                  <th class="text-center table-timezone" scope="col">時間帯</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% bugs.forEach(bug => { %>
-                  <tr id="row<%= bug.bug_id %>" onclick="addBugs(<%= bug.bug_id %>)">
-                    <td class="align-middle table-text"><%= bug.bug_id %></td>
-                    <td class="align-middle table-text"><%= bug.name %></td>
-                    <td class="align-middle table-text"><%= bug.value %></td>
-                    <td class="align-middle table-text">
-                      <% bug.location.forEach(loc => { %>
-                        <%= loc %>
-                      <% }); %>
-                    </td>
-                    <td class="align-middle">
+          <div class="col-lg-10 col-12">
+            <div class="row">
+              <% Object.keys(bugs).forEach(key => { %>
+                <div class="col-lg-3 col-12">
+                  <div class="card item-card" id="row<%= key %>" onclick="addBugs(<%= key %>)">
+                    <div class="card-body text-center">
+                      <img src="/images/bug/<%= bugs[key].e_name %>.png" class="card-img-top item-img">
+                      <h5 class="card-title"><%= bugs[key].name %></h5>
                       <table class="table table-sm hover-none">
+                        <thead>
+                          <tr>
+                            <th scope="col">売値</th>
+                            <th scope="col">場所</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><%= bugs[key].value %></td>
+                            <td>
+                              <% bugs[key].location.forEach(loc => { %>
+                                <%= loc %>
+                              <% }); %>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table class="table table-sm hover-none monthly-table">
                         <% for (let i = 1; i < 13; i++) { %>
                           <% if (i % 6 == 1) { %>
                             <tr class="text-center">
                           <% } %>
                           <% let month = (!user || user.hemisphere === 'northern') ? i : ((i + 6) % 12 === 0 ? 1 : (i + 6) % 12); %>
-                          <% if (bug.month.indexOf(month) >= 0) { %>
+                          <% if (bugs[key].month.indexOf(month) >= 0) { %>
                             <td class="is-positive"><%= i %></td>
                           <% } else { %>
                             <td><%= i %></td>
@@ -73,14 +75,12 @@
                           <% } %>
                         <% } %>
                       </table>
-                    </td>
-                    <td>
-                      <svg id="svg<%= bug.bug_id %>" width="100%" height="50%" onload="displayTime(<%= bug.bug_id %>, [<%= bug.time %>])"></svg>
-                    </td>
-                  </tr>
-                <% }); %>
-              </tbody>
-            </table>
+                      <svg id="svg<%= key %>" width="100%" height="50px" onload="displayTime(<%= key %>, [<%= bugs[key].time %>])"></svg>
+                    </div>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
           </div>
           <div class="col-lg-1"></div>
         </div>

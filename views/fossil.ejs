@@ -50,11 +50,11 @@
                 </tr>
               </thead>
               <tbody>
-                <% standAloneFossils.forEach(fossil => { %>
-                  <tr id="row<%= fossil.fossil_id %>" onclick="addItems(<%= fossil.fossil_id %>)">
-                    <td class="align-middle table-text text-center"><%= fossil.fossil_id %></td>
-                    <td class="align-middle table-text text-center"><%= fossil.name %></td>
-                    <td class="align-middle table-text text-right"><%= fossil.value %></td>
+                <% Object.keys(standAloneFossils).forEach(key => { %>
+                  <tr id="row<%= key %>" onclick="addItems(<%= key %>)">
+                    <td class="align-middle table-text text-center"><%= key %></td>
+                    <td class="align-middle table-text text-center"><%= standAloneFossils[key].name %></td>
+                    <td class="align-middle table-text text-right"><%= standAloneFossils[key].value %></td>
                   </tr>
                 <% }); %>
               </tbody>
@@ -81,16 +81,16 @@
                 </tr>
               </thead>
               <tbody>
-                <% multiPartFossils.forEach((fossil, index) => { %>
-                  <% if (index === 0 || fossil.species !== multiPartFossils[index - 1].species) { %>
+                <% Object.keys(multiPartFossils).forEach((key, index) => { %>
+                  <% if (index === 0 || multiPartFossils[key].species !== multiPartFossils[key - 1].species) { %>
                     <tr>
-                      <td colspan="3" class="table-subheading-text text-center"><%= fossil.species %></td>
+                      <td colspan="3" class="table-subheading-text text-center"><%= multiPartFossils[key].species %></td>
                     </tr>
                   <% } %>
-                  <tr id="row<%= fossil.fossil_id %>" onclick="addItems(<%= fossil.fossil_id %>)">
-                    <td class="align-middle table-text text-center"><%= fossil.fossil_id %></td>
-                    <td class="align-middle table-text text-center"><%= fossil.name %></td>
-                    <td class="align-middle table-text text-right"><%= fossil.value %></td>
+                  <tr id="row<%= key %>" onclick="addItems(<%= key %>)">
+                    <td class="align-middle table-text text-center"><%= key %></td>
+                    <td class="align-middle table-text text-center"><%= multiPartFossils[key].name %></td>
+                    <td class="align-middle table-text text-right"><%= multiPartFossils[key].value %></td>
                   </tr>
                 <% }); %>
               </tbody>

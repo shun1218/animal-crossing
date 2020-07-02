@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155198768-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-155198768-4');
+    </script>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="wrapper">
+      <%- include('./_header') %>
+      <div class="content container-fluid">
+        <div class="row">
+          <div class="col-10 offset-md-1">
+            <div class="card about-card">
+              <div class="card-body">
+                <h3 class="card-title">
+                  このサイトについて
+                </h3>
+                <p class="card-text">
+                  このサイトは、Nintendo Switch用ソフト「あつまれ どうぶつの森」のアイテムチェックリストです。<br>
+                  Twitterアカウントでログインしていただければ、チェック&保存ができます。
+                </p>
+                <hr>
+                <h3 class="card-title">
+                  更新履歴
+                </h3>
+                <p class="card-text">
+                  <table class="table">
+                    <thead>
+                      <tr class="text-center">
+                        <th scope="col">日付</th>
+                        <th scope="col">Ver.</th>
+                        <th scope="col">内容</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">2020/07/03</td>
+                        <td class="text-center">1.1</td>
+                        <td>ムシ・サカナの一覧表示を更新。</td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">2020/06/10</td>
+                        <td class="text-center">1.0</td>
+                        <td>公開開始。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+                <hr>
+                <h3 class="card-title">
+                  お問い合わせ
+                </h3>
+                <p class="card-text">
+                  追加機能の要望、データの誤り等ありましたら、下記へお願いいたします。<br>
+                  <a href="https://twitter.com/shun_1218" target="_blank" rel="noopener noreferrer"><img src="/images/twitter.svg" alt="Twitter" class="social-img"></a>
+                </p>
+                <hr>
+                <h3 class="card-title">
+                  画像引用元
+                </h3>
+                <p class="card-text">
+                  <a href="https://animalcrossing.fandom.com/wiki/Animal_Crossing_Wiki" target="_blank" rel="noopener noreferrer">Animal Crossing Wiki</a>
+                </p>
+                <h4 class="card-title">ムシ・サカナ</h4>
+                <p class="card-text">
+                  <a href="https://animalcrossing.fandom.com/wiki/User:Dragonfree97" target="_blank" rel="noopener noreferrer">Dragonfree97 / CC-BY-SA 4.0</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-1"></div>
+        </div>
+      </div>
+      <div class="ad">
+        <!-- admax -->
+        <script src="https://adm.shinobi.jp/o/fb300eb250ef49cb5c3270c6d8d09a29"></script>
+        <!-- admax -->
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

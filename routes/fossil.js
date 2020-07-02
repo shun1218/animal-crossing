@@ -5,6 +5,7 @@ var router = express.Router();
 const authentication = require('./authentication');
 const mongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
+const fs = require('fs');
 
 const url = process.env.MONGODB_URL;
 const connectOption = {
@@ -13,19 +14,9 @@ const connectOption = {
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  let standAloneFossils = [];
-  let multiPartFossils = [];
   let user = new authentication().getUser(req);
-  const client = await mongoClient.connect(url, connectOption);
-  const dbName = await client.db('items');
-  const fossils = await dbName.collection('fossils').find().toArray();
-  for (let i = 0; i < fossils.length; i++) {
-    if (fossils[i].type === 'stand-alone') {
-      standAloneFossils.push(fossils[i]);
-    } else if (fossils[i].type === 'multi-part') {
-      multiPartFossils.push(fossils[i]);
-    }
-  }
+  const standAloneFossils = JSON.parse(fs.readFileSync('./json/fossil_stand_alone.json', 'utf-8'));
+  const multiPartFossils = JSON.parse(fs.readFileSync('./json/fossil_multi_part.json', 'utf-8'));
   return res.render('fossil', { title: 'あつまれどうぶつの森 チェックリスト', standAloneFossils, multiPartFossils, user });
 });
 

@@ -6,9 +6,13 @@ a {
   color: #00b7ff;
 }
 
-
 table {
   border: tomato;
+}
+
+.about-card {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .background {
@@ -28,6 +32,14 @@ table {
   color: #fff;
 }
 
+.item-card {
+  margin-bottom: 1rem;
+}
+
+.item-img {
+  width: 128px;
+}
+
 .margin-row {
   margin: 1rem 0;
 }
@@ -38,6 +50,10 @@ table {
   margin: 1rem 0;
 }
 
+.monthly-table {
+  table-layout: fixed;
+}
+
 .navbar {
   background-color: #89caa2 !important;
   color: rgba(0, 0, 0, 0.7) !important;
@@ -45,6 +61,11 @@ table {
 
 .navbar-brand {
   color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.social-img {
+  width: 3rem;
+  vertical-align: middle;
 }
 
 .success-message {

@@ -1,0 +1,72 @@
+{
+ "1": {
+  "type": "stand-alone",
+  "name": "アカントステガ",
+  "value": 2000
+ },
+ "2": {
+  "type": "stand-alone",
+  "name": "コハク",
+  "value": 1200
+ },
+ "3": {
+  "type": "stand-alone",
+  "name": "アンモナイト",
+  "value": 1100
+ },
+ "4": {
+  "type": "stand-alone",
+  "name": "アノマロカリス",
+  "value": 2000
+ },
+ "5": {
+  "type": "stand-alone",
+  "name": "しそちょう",
+  "value": 1300
+ },
+ "6": {
+  "type": "stand-alone",
+  "name": "アウストラロピテクス",
+  "value": 1100
+ },
+ "7": {
+  "type": "stand-alone",
+  "name": "ウンコのかせき",
+  "value": 1100
+ },
+ "8": {
+  "type": "stand-alone",
+  "name": "あしあとのかせき",
+  "value": 1000
+ },
+ "9": {
+  "type": "stand-alone",
+  "name": "ダンクルオステウス",
+  "value": 3500
+ },
+ "10": {
+  "type": "stand-alone",
+  "name": "ユーステノプテロン",
+  "value": 2000
+ },
+ "11": {
+  "type": "stand-alone",
+  "name": "ジュラマイア",
+  "value": 1000
+ },
+ "12": {
+  "type": "stand-alone",
+  "name": "ミロクンミンギア",
+  "value": 1500
+ },
+ "13": {
+  "type": "stand-alone",
+  "name": "サメのはのかせき",
+  "value": 1000
+ },
+ "14": {
+  "type": "stand-alone",
+  "name": "さんようちゅう",
+  "value": 1300
+ }
+}

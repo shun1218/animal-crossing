@@ -24,7 +24,7 @@
           <div class="col-lg-8 col-9 message text-center" id="message"></div>
           <div class="col-lg-2 col-3 text-right margin-row">
             <% if (user) { %>
-              <button type="button" class="btn btn-outline-primary" onclick="updateFishes()">保存</button>
+              <button type="button" class="btn btn-outline-primary" onclick="updateFish()">保存</button>
             <% } else { %>
               <button type="button" class="btn btn-outline-secondary" disabled>保存</button>
             <% } %>
@@ -33,39 +33,41 @@
         </div>
         <div class="row">
           <div class="col-lg-1"></div>
-          <div class="col-lg-10 col-12 table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th class="text-center" scope="col">#</th>
-                  <th class="text-center" scope="col">名前</th>
-                  <th class="text-center" scope="col">売値</th>
-                  <th class="text-center" scope="col">場所</th>
-                  <th class="text-center" scope="col">魚影</th>
-                  <th class="text-center" scope="col">時期</th>
-                  <th class="text-center table-timezone" scope="col">時間帯</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% fishes.forEach(fish => { %>
-                  <tr id="row<%= fish.fish_id %>" onclick="addFishes(<%= fish.fish_id %>)">
-                    <td class="align-middle table-text"><%= fish.fish_id %></td>
-                    <td class="align-middle table-text"><%= fish.name %></td>
-                    <td class="align-middle table-text"><%= fish.value %></td>
-                    <td class="align-middle table-text">
-                      <% fish.location.forEach(loc => { %>
-                        <%= loc %>
-                      <% }); %>
-                    </td>
-                    <td class="align-middle table-text"><%= fish.shadow_size %></td>
-                    <td class="align-middle">
+          <div class="col-lg-10 col-12">
+            <div class="row">
+              <% Object.keys(fishes).forEach(key => { %>
+                <div class="col-lg-3 col-12">
+                  <div class="card item-card" id="row<%= key %>" onclick="addFish(<%= key %>)">
+                    <div class="card-body text-center">
+                      <img src="/images/fish/<%= fishes[key].e_name %>.png" class="card-img-top item-img">
+                      <h5 class="card-title"><%= fishes[key].name %></h5>
                       <table class="table table-sm hover-none">
+                        <thead>
+                          <tr>
+                            <th scope="col">売値</th>
+                            <th scope="col">場所</th>
+                            <th scope="col">魚影</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><%= fishes[key].value %></td>
+                            <td>
+                              <% fishes[key].location.forEach(loc => { %>
+                                <%= loc %>
+                              <% }); %>
+                            </td>
+                            <td><%= fishes[key].shadow_size %></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table class="table table-sm hover-none monthly-table">
                         <% for (let i = 1; i < 13; i++) { %>
                           <% if (i % 6 == 1) { %>
                             <tr class="text-center">
                           <% } %>
                           <% let month = (!user || user.hemisphere === 'northern') ? i : ((i + 6) % 12 === 0 ? 1 : (i + 6) % 12); %>
-                          <% if (fish.month.indexOf(month) >= 0) { %>
+                          <% if (fishes[key].month.indexOf(month) >= 0) { %>
                             <td class="is-positive"><%= i %></td>
                           <% } else { %>
                             <td><%= i %></td>
@@ -75,14 +77,12 @@
                           <% } %>
                         <% } %>
                       </table>
-                    </td>
-                    <td>
-                      <svg id="svg<%= fish.fish_id %>" width="100%" height="50%" onload="displayTime(<%= fish.fish_id %>, [<%= fish.time %>])"></svg>
-                    </td>
-                  </tr>
-                <% }); %>
-              </tbody>
-            </table>
+                      <svg id="svg<%= key %>" width="100%" height="50px" onload="displayTime(<%= key %>, [<%= fishes[key].time %>])"></svg>
+                    </div>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
           </div>
           <div class="col-lg-1"></div>
         </div>
@@ -104,7 +104,7 @@
         });
       });
 
-      function addFishes(fishId) {
+      function addFish(fishId) {
         let row = document.getElementById('row' + String(fishId));
         if (fishes.indexOf(fishId) < 0) {
           fishes.push(fishId);
@@ -115,7 +115,7 @@
         }
       }
 
-      function updateFishes() {
+      function updateFish() {
         $.ajax({
           url: '/fish/update',
           type: 'POST',

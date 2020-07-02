@@ -5,6 +5,7 @@ var router = express.Router();
 const authentication = require('./authentication');
 const mongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
+const fs = require('fs');
 
 const url = process.env.MONGODB_URL;
 const connectOption = {
@@ -14,9 +15,7 @@ const connectOption = {
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   let user = new authentication().getUser(req);
-  const client = await mongoClient.connect(url, connectOption);
-  const dbName = await client.db('items');
-  const bugs = await dbName.collection('bugs').find().toArray();
+  const bugs = JSON.parse(fs.readFileSync('./json/bug.json', 'utf-8'));
   return res.render('bug', { title: 'あつまれどうぶつの森 チェックリスト', bugs, user });
 });
 

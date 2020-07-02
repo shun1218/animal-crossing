@@ -21,6 +21,7 @@ let indexRouter = require('./routes/index');
 let bugRouter = require('./routes/bug');
 let fishRouter = require('./routes/fish');
 let fossilRouter = require('./routes/fossil');
+let aboutRouter = require('./routes/about');
 let logoutRouter = require('./routes/logout');
 
 var app = express();
@@ -92,6 +93,7 @@ app.use('/', indexRouter);
 app.use('/bug', bugRouter);
 app.use('/fish', fishRouter);
 app.use('/fossil', fossilRouter);
+app.use('/about', aboutRouter);
 app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler

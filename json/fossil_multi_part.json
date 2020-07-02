@@ -1,0 +1,356 @@
+{
+ "15": {
+  "type": "multi-part",
+  "species": "アンキロサウルス",
+  "name": "アンキロサウルスのあたま",
+  "value": 5000
+ },
+ "16": {
+  "type": "multi-part",
+  "species": "アンキロサウルス",
+  "name": "アンキロサウルスのからだ",
+  "value": 3000
+ },
+ "17": {
+  "type": "multi-part",
+  "species": "アンキロサウルス",
+  "name": "アンキロサウルスのしっぽ",
+  "value": 2500
+ },
+ "18": {
+  "type": "multi-part",
+  "species": "アーケロン",
+  "name": "アーケロンのあたま",
+  "value": 4000
+ },
+ "19": {
+  "type": "multi-part",
+  "species": "アーケロン",
+  "name": "アーケロンのからだ",
+  "value": 3500
+ },
+ "20": {
+  "type": "multi-part",
+  "species": "イグアノドン",
+  "name": "イグアノドンのあたま",
+  "value": 4000
+ },
+ "21": {
+  "type": "multi-part",
+  "species": "イグアノドン",
+  "name": "イグアノドンのからだ",
+  "value": 3500
+ },
+ "22": {
+  "type": "multi-part",
+  "species": "イグアノドン",
+  "name": "イグアノドンのしっぽ",
+  "value": 3000
+ },
+ "23": {
+  "type": "multi-part",
+  "species": "オフタルモサウルス",
+  "name": "オフタルモサウルスのあたま",
+  "value": 2500
+ },
+ "24": {
+  "type": "multi-part",
+  "species": "オフタルモサウルス",
+  "name": "オフタルモサウルスのからだ",
+  "value": 2000
+ },
+ "25": {
+  "type": "multi-part",
+  "species": "ケツァルコアトルス",
+  "name": "ケツァルコアトルスのあたま",
+  "value": 4500
+ },
+ "26": {
+  "type": "multi-part",
+  "species": "ケツァルコアトルス",
+  "name": "ケツァルコアトルスのうよく",
+  "value": 5000
+ },
+ "27": {
+  "type": "multi-part",
+  "species": "ケツァルコアトルス",
+  "name": "ケツァルコアトルスのさよく",
+  "value": 5000
+ },
+ "28": {
+  "type": "multi-part",
+  "species": "ステゴサウルス",
+  "name": "ステゴサウルスのあたま",
+  "value": 5000
+ },
+ "29": {
+  "type": "multi-part",
+  "species": "ステゴサウルス",
+  "name": "ステゴサウルスのからだ",
+  "value": 4500
+ },
+ "30": {
+  "type": "multi-part",
+  "species": "ステゴサウルス",
+  "name": "ステゴサウルスのしっぽ",
+  "value": 4000
+ },
+ "31": {
+  "type": "multi-part",
+  "species": "スピノサウルス",
+  "name": "スピノサウルスのあたま",
+  "value": 4000
+ },
+ "32": {
+  "type": "multi-part",
+  "species": "スピノサウルス",
+  "name": "スピノサウルスのからだ",
+  "value": 5000
+ },
+ "33": {
+  "type": "multi-part",
+  "species": "スピノサウルス",
+  "name": "スピノサウルスのしっぽ",
+  "value": 2500
+ },
+ "34": {
+  "type": "multi-part",
+  "species": "スミロドン",
+  "name": "スミロドンのあたま",
+  "value": 2500
+ },
+ "35": {
+  "type": "multi-part",
+  "species": "スミロドン",
+  "name": "スミロドンのからだ",
+  "value": 2000
+ },
+ "36": {
+  "type": "multi-part",
+  "species": "ディノニクス",
+  "name": "ディノニクスのあたま",
+  "value": 3000
+ },
+ "37": {
+  "type": "multi-part",
+  "species": "ディノニクス",
+  "name": "ディノニクスのしっぽ",
+  "value": 2500
+ },
+ "38": {
+  "type": "multi-part",
+  "species": "ディプロドクス",
+  "name": "ディプロドクスのあたま",
+  "value": 5000
+ },
+ "39": {
+  "type": "multi-part",
+  "species": "ディプロドクス",
+  "name": "ディプロドクスのこし",
+  "value": 4500
+ },
+ "40": {
+  "type": "multi-part",
+  "species": "ディプロドクス",
+  "name": "ディプロドクスのむね",
+  "value": 4000
+ },
+ "41": {
+  "type": "multi-part",
+  "species": "ディプロドクス",
+  "name": "ディプロドクスのくび",
+  "value": 4500
+ },
+ "42": {
+  "type": "multi-part",
+  "species": "ディプロドクス",
+  "name": "ディプロドクスのしっぽ",
+  "value": 5000
+ },
+ "43": {
+  "type": "multi-part",
+  "species": "ディプロドクス",
+  "name": "ディプロドクスのしっぽのさき",
+  "value": 4000
+ },
+ "44": {
+  "type": "multi-part",
+  "species": "ディメトロドン",
+  "name": "ディメトロドンのあたま",
+  "value": 5500
+ },
+ "45": {
+  "type": "multi-part",
+  "species": "ディメトロドン",
+  "name": "ディメトロドンのからだ",
+  "value": 5000
+ },
+ "46": {
+  "type": "multi-part",
+  "species": "Tレックス",
+  "name": "Tレックスのあたま",
+  "value": 6000
+ },
+ "47": {
+  "type": "multi-part",
+  "species": "Tレックス",
+  "name": "Tレックスのからだ",
+  "value": 5500
+ },
+ "48": {
+  "type": "multi-part",
+  "species": "Tレックス",
+  "name": "Tレックスのしっぽ",
+  "value": 5000
+ },
+ "49": {
+  "type": "multi-part",
+  "species": "トリケラトプス",
+  "name": "トリケラトプスのあたま",
+  "value": 5500
+ },
+ "50": {
+  "type": "multi-part",
+  "species": "トリケラトプス",
+  "name": "トリケラトプスのからだ",
+  "value": 5000
+ },
+ "51": {
+  "type": "multi-part",
+  "species": "トリケラトプス",
+  "name": "トリケラトプスのしっぽ",
+  "value": 4500
+ },
+ "52": {
+  "type": "multi-part",
+  "species": "パキケファロ",
+  "name": "パキケファロのあたま",
+  "value": 4000
+ },
+ "53": {
+  "type": "multi-part",
+  "species": "パキケファロ",
+  "name": "パキケファロのからだ",
+  "value": 3500
+ },
+ "54": {
+  "type": "multi-part",
+  "species": "パラサウロロフス",
+  "name": "パラサウロロフスのあたま",
+  "value": 3500
+ },
+ "55": {
+  "type": "multi-part",
+  "species": "パラサウロロフス",
+  "name": "パラサウロロフスのからだ",
+  "value": 3000
+ },
+ "56": {
+  "type": "multi-part",
+  "species": "パラサウロロフス",
+  "name": "パラサウロロフスのしっぽ",
+  "value": 2500
+ },
+ "57": {
+  "type": "multi-part",
+  "species": "フタバサウルス",
+  "name": "フタバサウルスのあたま",
+  "value": 4000
+ },
+ "58": {
+  "type": "multi-part",
+  "species": "フタバサウルス",
+  "name": "フタバサウルスのからだ",
+  "value": 4500
+ },
+ "59": {
+  "type": "multi-part",
+  "species": "フタバサウルス",
+  "name": "フタバサウルスのしっぽ",
+  "value": 4500
+ },
+ "60": {
+  "type": "multi-part",
+  "species": "プテラノドン",
+  "name": "プテラノドンのあたま",
+  "value": 4000
+ },
+ "61": {
+  "type": "multi-part",
+  "species": "プテラノドン",
+  "name": "プテラノドンのうよく",
+  "value": 4500
+ },
+ "62": {
+  "type": "multi-part",
+  "species": "プテラノドン",
+  "name": "プテラノドンのさよく",
+  "value": 4500
+ },
+ "63": {
+  "type": "multi-part",
+  "species": "ブラキオサウルス",
+  "name": "ブラキオサウルスのあたま",
+  "value": 6000
+ },
+ "64": {
+  "type": "multi-part",
+  "species": "ブラキオサウルス",
+  "name": "ブラキオサウルスのむね",
+  "value": 5500
+ },
+ "65": {
+  "type": "multi-part",
+  "species": "ブラキオサウルス",
+  "name": "ブラキオサウルスのこし",
+  "value": 5000
+ },
+ "66": {
+  "type": "multi-part",
+  "species": "ブラキオサウルス",
+  "name": "ブラキオサウルスのしっぽ",
+  "value": 5500
+ },
+ "67": {
+  "type": "multi-part",
+  "species": "マンモス",
+  "name": "マンモスのあたま",
+  "value": 3000
+ },
+ "68": {
+  "type": "multi-part",
+  "species": "マンモス",
+  "name": "マンモスのからだ",
+  "value": 2500
+ },
+ "69": {
+  "type": "multi-part",
+  "species": "メガセロプス",
+  "name": "メガセロプスのあたま",
+  "value": 4500
+ },
+ "70": {
+  "type": "multi-part",
+  "species": "メガセロプス",
+  "name": "メガセロプスのからだ",
+  "value": 3500
+ },
+ "71": {
+  "type": "multi-part",
+  "species": "メガセロプス",
+  "name": "メガセロプスのしっぽ",
+  "value": 3000
+ },
+ "72": {
+  "type": "multi-part",
+  "species": "メガロケロス",
+  "name": "メガロケロスのみぎはんしん",
+  "value": 5500
+ },
+ "73": {
+  "type": "multi-part",
+  "species": "メガロケロス",
+  "name": "メガロケロスのひだりはんしん",
+  "value": 4000
+ }
+}
