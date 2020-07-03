@@ -12,16 +12,16 @@
     </script>
     <title><%= title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <div class="wrapper">
       <%- include('./_header') %>
       <div class="content container-fluid">
-        <div class="row">
-          <div class="col-lg-1 background"></div>
-          <div class="col-lg-8 col-9 message text-center" id="message"></div>
+        <div class="row" id="alertRow">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-8 col-9 message text-center" id="alert"></div>
           <div class="col-lg-2 col-3 text-right margin-row">
             <% if (user) { %>
               <button type="button" class="btn btn-outline-primary" onclick="updateItems()">保存</button>
@@ -29,83 +29,88 @@
               <button type="button" class="btn btn-outline-secondary" disabled>保存</button>
             <% } %>
           </div>
-          <div class="col-lg-1 background"></div>
+          <div class="col-lg-1"></div>
         </div>
-        <div class="row">
-          <div class="col-lg-1 background"></div>
-          <div class="col-lg-10 col-12">
-            <h3 class="text-center">単品</h3>
-          </div>
-          <div class="col-lg-1 background"></div>
-        </div>
-        <div class="row">
-          <div class="col-lg-1 background"></div>
-          <div class="col-lg-10 col-12">
-            <table class="table table-hover table-bordered">
-              <thead>
-                <tr>
-                  <th class="text-center" scope="col">#</th>
-                  <th class="text-center" scope="col">名前</th>
-                  <th class="text-center" scope="col">売値</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% Object.keys(standAloneFossils).forEach(key => { %>
-                  <tr id="row<%= key %>" onclick="addItems(<%= key %>)">
-                    <td class="align-middle table-text text-center"><%= key %></td>
-                    <td class="align-middle table-text text-center"><%= standAloneFossils[key].name %></td>
-                    <td class="align-middle table-text text-right"><%= standAloneFossils[key].value %></td>
-                  </tr>
-                <% }); %>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-lg-1 background"></div>
-        </div>
-        <div class="row">
-          <div class="col-lg-1 background"></div>
-          <div class="col-lg-10 col-12">
-            <h3 class="text-center">複合品</h3>
-          </div>
-          <div class="col-lg-1 background"></div>
-        </div>
-        <div class="row">
-          <div class="col-lg-1 background"></div>
-          <div class="col-lg-10 col-12">
-            <table class="table table-hover table-bordered">
-              <thead>
-                <tr>
-                  <th class="text-center" scope="col">#</th>
-                  <th class="text-center" scope="col">名前</th>
-                  <th class="text-center" scope="col">売値</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% Object.keys(multiPartFossils).forEach((key, index) => { %>
-                  <% if (index === 0 || multiPartFossils[key].species !== multiPartFossils[key - 1].species) { %>
+        <div class="row" id="itemList">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-10 col-12">
+                <h3 class="text-center">単品</h3>
+              </div>
+              <div class="col-lg-1"></div>
+            </div>
+            <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-10 col-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
                     <tr>
-                      <td colspan="3" class="table-subheading-text text-center"><%= multiPartFossils[key].species %></td>
+                      <th class="text-center" scope="col">#</th>
+                      <th class="text-center" scope="col">名前</th>
+                      <th class="text-center" scope="col">売値</th>
                     </tr>
-                  <% } %>
-                  <tr id="row<%= key %>" onclick="addItems(<%= key %>)">
-                    <td class="align-middle table-text text-center"><%= key %></td>
-                    <td class="align-middle table-text text-center"><%= multiPartFossils[key].name %></td>
-                    <td class="align-middle table-text text-right"><%= multiPartFossils[key].value %></td>
-                  </tr>
-                <% }); %>
-              </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                    <% Object.keys(standAloneFossils).forEach(key => { %>
+                      <tr id="row<%= key %>" onclick="addItems(<%= key %>)">
+                        <td class="align-middle table-text text-center"><%= key %></td>
+                        <td class="align-middle table-text text-center"><%= standAloneFossils[key].name %></td>
+                        <td class="align-middle table-text text-right"><%= standAloneFossils[key].value %></td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-lg-1"></div>
+            </div>
+            <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-10 col-12">
+                <h3 class="text-center">複合品</h3>
+              </div>
+              <div class="col-lg-1"></div>
+            </div>
+            <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-10 col-12">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="text-center" scope="col">#</th>
+                      <th class="text-center" scope="col">名前</th>
+                      <th class="text-center" scope="col">売値</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% Object.keys(multiPartFossils).forEach((key, index) => { %>
+                      <% if (index === 0 || multiPartFossils[key].species !== multiPartFossils[key - 1].species) { %>
+                        <tr>
+                          <td colspan="3" class="table-subheading-text text-center"><%= multiPartFossils[key].species %></td>
+                        </tr>
+                      <% } %>
+                      <tr id="row<%= key %>" onclick="addItems(<%= key %>)">
+                        <td class="align-middle table-text text-center"><%= key %></td>
+                        <td class="align-middle table-text text-center"><%= multiPartFossils[key].name %></td>
+                        <td class="align-middle table-text text-right"><%= multiPartFossils[key].value %></td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-lg-1"></div>
+            </div>
           </div>
-          <div class="col-lg-1 background"></div>
         </div>
       </div>
       <!-- admax -->
       <script src="https://adm.shinobi.jp/s/851976ae13ff9977678b275c05fed42c"></script>
       <!-- admax -->
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="/javascripts/common.js"></script>
     <script>
       let fossils = [<%= user ? user.fossils : null %>];
 
@@ -114,6 +119,7 @@
           let row = document.getElementById('row' + String(fossil));
           row.classList.add('getted');
         });
+        adjustScrolling();
       });
 
       function addItems(fossilId) {
@@ -128,6 +134,8 @@
       }
 
       function updateItems() {
+        displayUpdatingSpinner();
+        fossils.sort(compareNum);
         $.ajax({
           url: '/fossil/update',
           type: 'POST',
@@ -135,12 +143,9 @@
             'fossils': fossils
           }
         }).then((data) => {
-          let tag = document.getElementById('message');
-          tag.innerHTML = data.message;
-          tag.classList.add('success-message');
+          displayUpdatingSuccess(data);
         }).catch((error) => {
-          let tag = document.getElementById('message');
-          tag.innerHTML = error.responseJSON.error;
+          displayUpdatingFailure(error);
         });
       }
     </script>

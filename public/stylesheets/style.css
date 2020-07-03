@@ -45,7 +45,7 @@ table {
 }
 
 .message {
-  color: #bd3d33;
+  color: rgba(0, 0, 0, 0.7);
   font-size: 1.2rem;
   margin: 1rem 0;
 }
@@ -63,13 +63,13 @@ table {
   color: rgba(0, 0, 0, 0.7) !important;
 }
 
+.not-login {
+  color: #bd3d33;
+}
+
 .social-img {
   width: 3rem;
   vertical-align: middle;
-}
-
-.success-message {
-  color: rgba(0, 0, 0, 0.7) !important;
 }
 
 .table-text {
@@ -99,6 +99,10 @@ table {
 @media (max-width: 1200px) {
   .ad {
     width: 100%;
+  }
+
+  .item-img {
+    width: 64px;
   }
 
   .navbar-brand {
