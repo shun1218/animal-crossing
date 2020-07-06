@@ -21,6 +21,7 @@ let indexRouter = require('./routes/index');
 let bugRouter = require('./routes/bug');
 let fishRouter = require('./routes/fish');
 let fossilRouter = require('./routes/fossil');
+let artRouter = require('./routes/art');
 let aboutRouter = require('./routes/about');
 let logoutRouter = require('./routes/logout');
 
@@ -55,14 +56,19 @@ async function(token, tokenSecret, profile, done) {
     if (!userData.fossils) {
       userData.fossils = [];
     }
+    if (!userData.arts) {
+      userData.arts = [];
+    }
     user.fossils = userData.fossils;
+    user.arts = userData.arts;
   }
   if (!userData) {
-    let result = await dbName.collection('users').insertOne({'user_id': user.id, 'hemisphere': 'northern', 'bugs': [], 'fishes': [], 'fossils': []});
+    let result = await dbName.collection('users').insertOne({'user_id': user.id, 'hemisphere': 'northern', 'bugs': [], 'fishes': [], 'fossils': [], 'arts': []});
     user.hemisphere = 'northern';
     user.bugs = [];
     user.fishes = [];
     user.fossils = [];
+    user.arts = [];
   }
   return done(null, user);
 }
@@ -93,6 +99,7 @@ app.use('/', indexRouter);
 app.use('/bug', bugRouter);
 app.use('/fish', fishRouter);
 app.use('/fossil', fossilRouter);
+app.use('/art', artRouter);
 app.use('/about', aboutRouter);
 app.use('/logout', logoutRouter);
 

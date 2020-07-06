@@ -2,71 +2,85 @@
  "1": {
   "type": "stand-alone",
   "name": "アカントステガ",
+  "f_name": "acanthostega",
   "value": 2000
  },
  "2": {
   "type": "stand-alone",
   "name": "コハク",
+  "f_name": "amber",
   "value": 1200
  },
  "3": {
   "type": "stand-alone",
   "name": "アンモナイト",
+  "f_name": "ammonite",
   "value": 1100
  },
  "4": {
   "type": "stand-alone",
   "name": "アノマロカリス",
+  "f_name": "anomalocaris",
   "value": 2000
  },
  "5": {
   "type": "stand-alone",
   "name": "しそちょう",
+  "f_name": "archaeopteryx",
   "value": 1300
  },
  "6": {
   "type": "stand-alone",
   "name": "アウストラロピテクス",
+  "f_name": "australopith",
   "value": 1100
  },
  "7": {
   "type": "stand-alone",
   "name": "ウンコのかせき",
+  "f_name": "coprolite",
   "value": 1100
  },
  "8": {
   "type": "stand-alone",
   "name": "あしあとのかせき",
+  "f_name": "dinosaurtrack",
   "value": 1000
  },
  "9": {
   "type": "stand-alone",
   "name": "ダンクルオステウス",
+  "f_name": "dunkleosteus",
   "value": 3500
  },
  "10": {
   "type": "stand-alone",
   "name": "ユーステノプテロン",
+  "f_name": "eusthenopteron",
   "value": 2000
  },
  "11": {
   "type": "stand-alone",
   "name": "ジュラマイア",
+  "f_name": "juramaia",
   "value": 1000
  },
  "12": {
   "type": "stand-alone",
   "name": "ミロクンミンギア",
+  "f_name": "myllokunmingia",
   "value": 1500
  },
  "13": {
   "type": "stand-alone",
   "name": "サメのはのかせき",
+  "f_name": "sharktoothpattern",
   "value": 1000
  },
  "14": {
   "type": "stand-alone",
   "name": "さんようちゅう",
+  "f_name": "trilobite",
   "value": 1300
  }
 }

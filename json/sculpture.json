@@ -1,0 +1,80 @@
+{
+ "31": {
+  "name": "いしあたまなちょうこく",
+  "f_name": "rockheadstatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "32": {
+  "name": "いだいなちょうこく",
+  "f_name": "greatstatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ }, 
+ "33": {
+  "name": "いにしえのちょうこく",
+  "f_name": "ancientstatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "34": {
+  "name": "うつくしいちょうこく",
+  "f_name": "beautifulstatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "35": {
+  "name": "こうごうしいちょうこく",
+  "f_name": "valiantstatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "36": {
+  "name": "しんぴてきなちょうこく",
+  "f_name": "mysticstatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "37": {
+  "name": "たくましいちょうこく",
+  "f_name": "robuststatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "38": {
+  "name": "てがかりのちょうこく",
+  "f_name": "informativestatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "39": {
+  "name": "とてつもないちょうこく",
+  "f_name": "tremendousstatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "40": {
+  "name": "なじみのあるちょうこく",
+  "f_name": "familiarstatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "41": {
+  "name": "ぼせいあふれるちょうこく",
+  "f_name": "motherlystatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "42": {
+  "name": "もののふのちょうこく",
+  "f_name": "warriorstatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "43": {
+  "name": "りりしいちょうこく",
+  "f_name": "gallantstatue",
+  "buy_price": 3920,
+  "sell_price": 490
+ }
+}

@@ -36,32 +36,35 @@
             <div class="row">
               <div class="col-lg-1"></div>
               <div class="col-lg-10 col-12">
-                <h3 class="text-center">単品</h3>
+                <h3 class="text-center">絵画</h3>
               </div>
               <div class="col-lg-1"></div>
             </div>
             <div class="row">
               <div class="col-lg-1"></div>
               <div class="col-lg-10 col-12">
-                <div class="row">
-                  <% Object.keys(standAloneFossils).forEach(key => { %>
+                <div class="row align-items-center">
+                  <% Object.keys(paintings).forEach(key => { %>
                     <div class="col-lg-3 col-12">
                       <div class="card item-card" id="row<%= key %>" onclick="addItems(<%= key %>)">
                         <div class="card-body text-center">
-                          <img src="/images/fossil/<%= standAloneFossils[key].f_name %>.png" class="card-img-top item-img">
-                          <h5 class="card-title"><%= standAloneFossils[key].name %></h5>
+                          <img src="/images/art/<%= paintings[key].f_name %>.png" class="card-img-top item-img">
+                          <h5 class="card-title"><%= paintings[key].name %></h5>
                           <table class="table table-sm hover-none">
                             <thead>
                               <tr>
+                                <th scope="col">買値</th>
                                 <th scope="col">売値</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td><%= standAloneFossils[key].value %></td>
+                                <td><%= paintings[key].buy_price %></td>
+                                <td><%= paintings[key].sell_price %></td>
                               </tr>
                             </tbody>
                           </table>
+                          <p>※カタログ注文不可</p>
                         </div>
                       </div>
                     </div>
@@ -73,38 +76,35 @@
             <div class="row">
               <div class="col-lg-1"></div>
               <div class="col-lg-10 col-12">
-                <h3 class="text-center">複合品</h3>
+                <h3 class="text-center">彫刻</h3>
               </div>
               <div class="col-lg-1"></div>
             </div>
             <div class="row">
               <div class="col-lg-1"></div>
               <div class="col-lg-10 col-12">
-                <div class="row">
-                  <% Object.keys(multiPartFossils).forEach((key, index) => { %>
-                    <% if (index === 0 || multiPartFossils[key].species !== multiPartFossils[key - 1].species) { %>
-                      <div class="col-12 text-center">
-                        <hr>
-                        <h4><%= multiPartFossils[key].species %></h4>
-                      </div>
-                    <% } %>
+                <div class="row align-items-center">
+                  <% Object.keys(sculptures).forEach((key, index) => { %>
                     <div class="col-lg-3 col-12">
                       <div class="card item-card" id="row<%= key %>" onclick="addItems(<%= key %>)">
                         <div class="card-body text-center">
-                          <img src="/images/fossil/<%= multiPartFossils[key].f_name %>.png" class="card-img-top item-img">
-                          <h5 class="card-title"><%= multiPartFossils[key].name %></h5>
+                          <img src="/images/art/<%= sculptures[key].f_name %>.png" class="card-img-top item-img">
+                          <h5 class="card-title"><%= sculptures[key].name %></h5>
                           <table class="table table-sm hover-none">
                             <thead>
                               <tr>
+                                <th scope="col">買値</th>
                                 <th scope="col">売値</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td><%= multiPartFossils[key].value %></td>
+                                <td><%= sculptures[key].buy_price %></td>
+                                <td><%= sculptures[key].sell_price %></td>
                               </tr>
                             </tbody>
                           </table>
+                          <p>※カタログ注文不可</p>
                         </div>
                       </div>
                     </div>
@@ -125,35 +125,35 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="/javascripts/common.js"></script>
     <script>
-      let fossils = [<%= user ? user.fossils : null %>];
+      let arts = [<%= user ? user.arts : null %>];
 
       $(document).ready(function () {
-        fossils.forEach(fossil => {
-          let row = document.getElementById('row' + String(fossil));
+        arts.forEach(art => {
+          let row = document.getElementById('row' + String(art));
           row.classList.add('getted');
         });
         adjustScrolling();
       });
 
-      function addItems(fossilId) {
-        let row = document.getElementById('row' + String(fossilId));
-        if (fossils.indexOf(fossilId) < 0) {
-          fossils.push(fossilId);
+      function addItems(artId) {
+        let row = document.getElementById('row' + String(artId));
+        if (arts.indexOf(artId) < 0) {
+          arts.push(artId);
           row.classList.add('getted');
         } else {
-          fossils = fossils.filter(n => n !== fossilId);
+          arts = arts.filter(n => n !== artId);
           row.classList.remove('getted');
         }
       }
 
       function updateItems() {
         displayUpdatingSpinner();
-        fossils.sort(compareNum);
+        arts.sort(compareNum);
         $.ajax({
-          url: '/fossil/update',
+          url: '/art/update',
           type: 'POST',
           data: {
-            'fossils': fossils
+            'arts': arts
           }
         }).then((data) => {
           displayUpdatingSuccess(data);

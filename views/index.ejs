@@ -89,6 +89,16 @@
                     </div>
                   </td>
                 </tr>
+                <tr>
+                  <th scope="row">美術品</th>
+                  <td><%= user ? user.arts.length : '-' %> / 43</td>
+                  <td>
+                    <div class="progress">
+                      <% let artRate = user ? Math.round((user.arts.length / 43) * 100 * 10) / 10 : 0 %>
+                      <div class="progress-bar" role="progressbar" style="width: <%= artRate %>%" aria-valuenow="<%= artRate %>" aria-valuemin="0" aria-valuemax="100"><%= artRate %>%</div>
+                    </div>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

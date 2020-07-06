@@ -1,0 +1,182 @@
+{
+ "1": {
+  "name": "アカデミックなめいが",
+  "f_name": "academicpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "2": {
+  "name": "あらぶるめいがのひだり",
+  "f_name": "wildpaintinglefthalf",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "3": {
+  "name": "あらぶるめいがのみぎ",
+  "f_name": "wildpaintingrighthalf",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "4": {
+  "name": "いいかんじのめいが",
+  "f_name": "warmpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "5": {
+  "name": "いいめいが",
+  "f_name": "nicepainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "6": {
+  "name": "いきなめいが",
+  "f_name": "dynamicpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "7": {
+  "name": "いさましいめいが",
+  "f_name": "basicpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "8": {
+  "name": "いなせなめいが",
+  "f_name": "scarypainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "9": {
+  "name": "おごそかなめいが",
+  "f_name": "solemnpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "10": {
+  "name": "おだやかなめいが",
+  "f_name": "calmpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "11": {
+  "name": "おちついためいが",
+  "f_name": "quaintpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "12": {
+  "name": "おもしろいめいが",
+  "f_name": "jollypainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "13": {
+  "name": "かちのあるめいが",
+  "f_name": "worthypainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "14": {
+  "name": "きれいなめいが",
+  "f_name": "movingpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "15": {
+  "name": "しずみゆくめいが",
+  "f_name": "sinkingpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "16": {
+  "name": "しなやかなめいが",
+  "f_name": "gracefulpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "17": {
+  "name": "すごいめいが",
+  "f_name": "amazingpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "18": {
+  "name": "すてきなめいが",
+  "f_name": "wistfulpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "19": {
+  "name": "すばらしいめいが",
+  "f_name": "perfectpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "20": {
+  "name": "たおやかなめいが",
+  "f_name": "serenepainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "21": {
+  "name": "たぐいまれなるめいが",
+  "f_name": "flowerypainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "22": {
+  "name": "ちからづよいめいが",
+  "f_name": "moodypainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "23": {
+  "name": "ちみつなめいが",
+  "f_name": "detailedpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "24": {
+  "name": "なぞめいためいが",
+  "f_name": "mysteriouspainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "25": {
+  "name": "にぎやかなめいが",
+  "f_name": "properpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "26": {
+  "name": "ひかりのめいが",
+  "f_name": "glowingpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "27": {
+  "name": "またたくめいが",
+  "f_name": "twinklingpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "28": {
+  "name": "みごとなめいが",
+  "f_name": "scenicpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "29": {
+  "name": "ゆうめいなめいが",
+  "f_name": "famouspainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ },
+ "30": {
+  "name": "よくみるめいが",
+  "f_name": "commonpainting",
+  "buy_price": 3920,
+  "sell_price": 490
+ }
+}

@@ -3,354 +3,413 @@
   "type": "multi-part",
   "species": "アンキロサウルス",
   "name": "アンキロサウルスのあたま",
+  "f_name": "ankyloskull",
   "value": 5000
  },
  "16": {
   "type": "multi-part",
   "species": "アンキロサウルス",
   "name": "アンキロサウルスのからだ",
+  "f_name": "ankylotorso",
   "value": 3000
  },
  "17": {
   "type": "multi-part",
   "species": "アンキロサウルス",
   "name": "アンキロサウルスのしっぽ",
+  "f_name": "ankylotail",
   "value": 2500
  },
  "18": {
   "type": "multi-part",
   "species": "アーケロン",
   "name": "アーケロンのあたま",
+  "f_name": "archelonskull",
   "value": 4000
  },
  "19": {
   "type": "multi-part",
   "species": "アーケロン",
   "name": "アーケロンのからだ",
+  "f_name": "archelontail",
   "value": 3500
  },
  "20": {
   "type": "multi-part",
   "species": "イグアノドン",
   "name": "イグアノドンのあたま",
+  "f_name": "iguanodonskull",
   "value": 4000
  },
  "21": {
   "type": "multi-part",
   "species": "イグアノドン",
   "name": "イグアノドンのからだ",
+  "f_name": "iguanodontorso",
   "value": 3500
  },
  "22": {
   "type": "multi-part",
   "species": "イグアノドン",
   "name": "イグアノドンのしっぽ",
+  "f_name": "iguanodontail",
   "value": 3000
  },
  "23": {
   "type": "multi-part",
   "species": "オフタルモサウルス",
   "name": "オフタルモサウルスのあたま",
+  "f_name": "ophthalmoskull",
   "value": 2500
  },
  "24": {
   "type": "multi-part",
   "species": "オフタルモサウルス",
   "name": "オフタルモサウルスのからだ",
+  "f_name": "ophthalmotorso",
   "value": 2000
  },
  "25": {
   "type": "multi-part",
   "species": "ケツァルコアトルス",
   "name": "ケツァルコアトルスのあたま",
+  "f_name": "quetzaltorso",
   "value": 4500
  },
  "26": {
   "type": "multi-part",
   "species": "ケツァルコアトルス",
   "name": "ケツァルコアトルスのうよく",
+  "f_name": "rightquetzalwing",
   "value": 5000
  },
  "27": {
   "type": "multi-part",
   "species": "ケツァルコアトルス",
   "name": "ケツァルコアトルスのさよく",
+  "f_name": "leftquetzalwing",
   "value": 5000
  },
  "28": {
   "type": "multi-part",
   "species": "ステゴサウルス",
   "name": "ステゴサウルスのあたま",
+  "f_name": "stegoskull",
   "value": 5000
  },
  "29": {
   "type": "multi-part",
   "species": "ステゴサウルス",
   "name": "ステゴサウルスのからだ",
+  "f_name": "stegotorso",
   "value": 4500
  },
  "30": {
   "type": "multi-part",
   "species": "ステゴサウルス",
   "name": "ステゴサウルスのしっぽ",
+  "f_name": "stegotail",
   "value": 4000
  },
  "31": {
   "type": "multi-part",
   "species": "スピノサウルス",
   "name": "スピノサウルスのあたま",
+  "f_name": "spinoskull",
   "value": 4000
  },
  "32": {
   "type": "multi-part",
   "species": "スピノサウルス",
   "name": "スピノサウルスのからだ",
+  "f_name": "spinotorso",
   "value": 5000
  },
  "33": {
   "type": "multi-part",
   "species": "スピノサウルス",
   "name": "スピノサウルスのしっぽ",
+  "f_name": "spinotail",
   "value": 2500
  },
  "34": {
   "type": "multi-part",
   "species": "スミロドン",
   "name": "スミロドンのあたま",
+  "f_name": "sabertoothskull",
   "value": 2500
  },
  "35": {
   "type": "multi-part",
   "species": "スミロドン",
   "name": "スミロドンのからだ",
+  "f_name": "sabertoothtail",
   "value": 2000
  },
  "36": {
   "type": "multi-part",
   "species": "ディノニクス",
   "name": "ディノニクスのあたま",
+  "f_name": "deinonytorso",
   "value": 3000
  },
  "37": {
   "type": "multi-part",
   "species": "ディノニクス",
   "name": "ディノニクスのしっぽ",
+  "f_name": "deinonytail",
   "value": 2500
  },
  "38": {
   "type": "multi-part",
   "species": "ディプロドクス",
   "name": "ディプロドクスのあたま",
+  "f_name": "diploskull",
   "value": 5000
  },
  "39": {
   "type": "multi-part",
   "species": "ディプロドクス",
   "name": "ディプロドクスのこし",
+  "f_name": "diplopelvis",
   "value": 4500
  },
  "40": {
   "type": "multi-part",
   "species": "ディプロドクス",
   "name": "ディプロドクスのむね",
+  "f_name": "diplochest",
   "value": 4000
  },
  "41": {
   "type": "multi-part",
   "species": "ディプロドクス",
   "name": "ディプロドクスのくび",
+  "f_name": "diploneck",
   "value": 4500
  },
  "42": {
   "type": "multi-part",
   "species": "ディプロドクス",
   "name": "ディプロドクスのしっぽ",
+  "f_name": "diplotail",
   "value": 5000
  },
  "43": {
   "type": "multi-part",
   "species": "ディプロドクス",
   "name": "ディプロドクスのしっぽのさき",
+  "f_name": "diplotailtip",
   "value": 4000
  },
  "44": {
   "type": "multi-part",
   "species": "ディメトロドン",
   "name": "ディメトロドンのあたま",
+  "f_name": "dimetrodonskull",
   "value": 5500
  },
  "45": {
   "type": "multi-part",
   "species": "ディメトロドン",
   "name": "ディメトロドンのからだ",
+  "f_name": "dimetrodontorso",
   "value": 5000
  },
  "46": {
   "type": "multi-part",
   "species": "Tレックス",
   "name": "Tレックスのあたま",
+  "f_name": "trexskull",
   "value": 6000
  },
  "47": {
   "type": "multi-part",
   "species": "Tレックス",
   "name": "Tレックスのからだ",
+  "f_name": "trextorso",
   "value": 5500
  },
  "48": {
   "type": "multi-part",
   "species": "Tレックス",
   "name": "Tレックスのしっぽ",
+  "f_name": "trextail",
   "value": 5000
  },
  "49": {
   "type": "multi-part",
   "species": "トリケラトプス",
   "name": "トリケラトプスのあたま",
+  "f_name": "triceraskull",
   "value": 5500
  },
  "50": {
   "type": "multi-part",
   "species": "トリケラトプス",
   "name": "トリケラトプスのからだ",
+  "f_name": "triceratorso",
   "value": 5000
  },
  "51": {
   "type": "multi-part",
   "species": "トリケラトプス",
   "name": "トリケラトプスのしっぽ",
+  "f_name": "triceratail",
   "value": 4500
  },
  "52": {
   "type": "multi-part",
   "species": "パキケファロ",
   "name": "パキケファロのあたま",
+  "f_name": "pachysaurusskull",
   "value": 4000
  },
  "53": {
   "type": "multi-part",
   "species": "パキケファロ",
   "name": "パキケファロのからだ",
+  "f_name": "pachysaurustail",
   "value": 3500
  },
  "54": {
   "type": "multi-part",
   "species": "パラサウロロフス",
   "name": "パラサウロロフスのあたま",
+  "f_name": "parasaurskull",
   "value": 3500
  },
  "55": {
   "type": "multi-part",
   "species": "パラサウロロフス",
   "name": "パラサウロロフスのからだ",
+  "f_name": "parasaurtorso",
   "value": 3000
  },
  "56": {
   "type": "multi-part",
   "species": "パラサウロロフス",
   "name": "パラサウロロフスのしっぽ",
+  "f_name": "parasaurtail",
   "value": 2500
  },
  "57": {
   "type": "multi-part",
   "species": "フタバサウルス",
   "name": "フタバサウルスのあたま",
+  "f_name": "plesioskull",
   "value": 4000
  },
  "58": {
   "type": "multi-part",
   "species": "フタバサウルス",
   "name": "フタバサウルスのからだ",
+  "f_name": "plesiotorso",
   "value": 4500
  },
  "59": {
   "type": "multi-part",
   "species": "フタバサウルス",
   "name": "フタバサウルスのしっぽ",
+  "f_name": "plesiotail",
   "value": 4500
  },
  "60": {
   "type": "multi-part",
   "species": "プテラノドン",
   "name": "プテラノドンのあたま",
+  "f_name": "pterabody",
   "value": 4000
  },
  "61": {
   "type": "multi-part",
   "species": "プテラノドン",
   "name": "プテラノドンのうよく",
+  "f_name": "rightpterawing",
   "value": 4500
  },
  "62": {
   "type": "multi-part",
   "species": "プテラノドン",
   "name": "プテラノドンのさよく",
+  "f_name": "leftpterawing",
   "value": 4500
  },
  "63": {
   "type": "multi-part",
   "species": "ブラキオサウルス",
   "name": "ブラキオサウルスのあたま",
+  "f_name": "brachioskull",
   "value": 6000
  },
  "64": {
   "type": "multi-part",
   "species": "ブラキオサウルス",
   "name": "ブラキオサウルスのむね",
+  "f_name": "brachiochest",
   "value": 5500
  },
  "65": {
   "type": "multi-part",
   "species": "ブラキオサウルス",
   "name": "ブラキオサウルスのこし",
+  "f_name": "brachiopelvis",
   "value": 5000
  },
  "66": {
   "type": "multi-part",
   "species": "ブラキオサウルス",
   "name": "ブラキオサウルスのしっぽ",
+  "f_name": "brachiotail",
   "value": 5500
  },
  "67": {
   "type": "multi-part",
   "species": "マンモス",
   "name": "マンモスのあたま",
+  "f_name": "mammothskull",
   "value": 3000
  },
  "68": {
   "type": "multi-part",
   "species": "マンモス",
   "name": "マンモスのからだ",
+  "f_name": "mammothtorso",
   "value": 2500
  },
  "69": {
   "type": "multi-part",
   "species": "メガセロプス",
   "name": "メガセロプスのあたま",
+  "f_name": "megaceroskull",
   "value": 4500
  },
  "70": {
   "type": "multi-part",
   "species": "メガセロプス",
   "name": "メガセロプスのからだ",
+  "f_name": "megacerotorso",
   "value": 3500
  },
  "71": {
   "type": "multi-part",
   "species": "メガセロプス",
   "name": "メガセロプスのしっぽ",
+  "f_name": "megacerotail",
   "value": 3000
  },
  "72": {
   "type": "multi-part",
   "species": "メガロケロス",
   "name": "メガロケロスのみぎはんしん",
+  "f_name": "rightmegaloside",
   "value": 5500
  },
  "73": {
   "type": "multi-part",
   "species": "メガロケロス",
   "name": "メガロケロスのひだりはんしん",
+  "f_name": "leftmegaloside",
   "value": 4000
  }
 }
