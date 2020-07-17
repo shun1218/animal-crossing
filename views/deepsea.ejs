@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155198768-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-155198768-4');
+    </script>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="wrapper">
+      <%- include('./_header') %>
+      <div class="content container-fluid">
+        <div class="row" id="alertRow">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-8 col-9 message text-center" id="alert"></div>
+          <div class="col-lg-2 col-3 text-right margin-row">
+            <% if (user) { %>
+              <button type="button" class="btn btn-outline-primary" onclick="updateItem()">保存</button>
+            <% } else { %>
+              <button type="button" class="btn btn-outline-secondary" disabled>保存</button>
+            <% } %>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10 col-12">
+            <div class="row" id="itemList">
+              <% Object.keys(deepSeaCreatures).forEach(key => { %>
+                <div class="col-lg-3 col-12">
+                  <div class="card item-card" id="row<%= key %>" onclick="addItem(<%= key %>)">
+                    <div class="card-body text-center">
+                      <img src="/images/deep-sea_creature/<%= deepSeaCreatures[key].f_name %>.png" class="card-img-top item-img">
+                      <h5 class="card-title"><%= deepSeaCreatures[key].name %></h5>
+                      <table class="table table-sm hover-none">
+                        <thead>
+                          <tr>
+                            <th scope="col">売値</th>
+                            <th scope="col">影</th>
+                            <th scope="col">速さ</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><%= deepSeaCreatures[key].value %></td>
+                            <td><%= deepSeaCreatures[key].shadow_size %></td>
+                            <td><%= deepSeaCreatures[key].speed %></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table class="table table-sm hover-none monthly-table">
+                        <% for (let i = 1; i < 13; i++) { %>
+                          <% if (i % 6 == 1) { %>
+                            <tr class="text-center">
+                          <% } %>
+                          <% let month = (!user || user.hemisphere === 'northern') ? i : ((i + 6) % 12 === 0 ? 1 : (i + 6) % 12); %>
+                          <% if (deepSeaCreatures[key].month.indexOf(month) >= 0) { %>
+                            <td class="is-positive"><%= i %></td>
+                          <% } else { %>
+                            <td><%= i %></td>
+                          <% } %>
+                          <% if (i % 6 == 0) { %>
+                            </tr>
+                          <% } %>
+                        <% } %>
+                      </table>
+                      <svg id="svg<%= key %>" width="100%" height="50px" onload="displayTime(<%= key %>, [<%= deepSeaCreatures[key].time %>])"></svg>
+                    </div>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+      </div>
+      <!-- admax -->
+      <script src="https://adm.shinobi.jp/s/851976ae13ff9977678b275c05fed42c"></script>
+      <!-- admax -->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="/javascripts/common.js"></script>
+    <script>
+      let deepSeaCreatures = [<%= user ? user.deepSeaCreatures : null %>];
+
+      $(document).ready(function () {
+        deepSeaCreatures.forEach(deepSeaCreature => {
+          let row = document.getElementById('row' + String(deepSeaCreature));
+          row.classList.add('getted');
+        });
+        adjustScrolling();
+      });
+
+      function addItem(deepSeaCreatureId) {
+        let row = document.getElementById('row' + String(deepSeaCreatureId));
+        if (deepSeaCreatures.indexOf(deepSeaCreatureId) < 0) {
+          deepSeaCreatures.push(deepSeaCreatureId);
+          row.classList.add('getted');
+        } else {
+          deepSeaCreatures = deepSeaCreatures.filter(n => n !== deepSeaCreatureId);
+          row.classList.remove('getted');
+        }
+      }
+
+      function updateItem() {
+        displayUpdatingSpinner();
+        deepSeaCreatures.sort(compareNum);
+        $.ajax({
+          url: '/deepsea/update',
+          type: 'POST',
+          data: {
+            'deepSeaCreatures': deepSeaCreatures
+          }
+        }).then((data) => {
+          displayUpdatingSuccess(data);
+        }).catch((error) => {
+          displayUpdatingFailure(error);
+        });
+      }
+    </script>
+  </body>
+</html>
