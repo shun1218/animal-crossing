@@ -3,14 +3,9 @@
 var express = require('express');
 var router = express.Router();
 const authentication = require('./authentication');
-const mongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 const fs = require('fs');
-
-const url = process.env.MONGODB_URL;
-const connectOption = {
-  useUnifiedTopology: true
-};
+const UserDeepSeaCreatureRepository = require('../repositories/user_deep_sea_creature.repository');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -34,9 +29,19 @@ router.post('/update', async function(req, res, next) {
       deepSeaCreatures.push(Number(req.body['deepSeaCreatures[]']));
     }
   }
-  const client = await mongoClient.connect(url, connectOption);
-  const dbName = await client.db('items');
-  const results = await dbName.collection('users').updateOne({'user_id': user.id}, {$set: {'deepSeaCreatures': deepSeaCreatures}});
+  let currentDeepSeaCreatures = req.session.passport.user.deepSeaCreatures;
+  let inserts = deepSeaCreatures.filter(item =>
+    !currentDeepSeaCreatures.includes(item)  
+  );
+  let deletes = currentDeepSeaCreatures.filter(item =>
+    !deepSeaCreatures.includes(item)
+  );
+  if (inserts.length > 0) {
+    await UserDeepSeaCreatureRepository.create(user.userId, inserts);
+  }
+  if (deletes.length > 0) {
+    await UserDeepSeaCreatureRepository.delete(user.userId, deletes);
+  }
   req.session.passport.user.deepSeaCreatures = deepSeaCreatures;
   return res.status(200).send({ message: '保存しました。' });
 });

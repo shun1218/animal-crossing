@@ -9,13 +9,13 @@ let config = require('config');
 let passport = require('passport');
 let TwitterStrategy = require('passport-twitter').Strategy;
 let session = require('express-session');
-const mongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
-
-const url = process.env.MONGODB_URL;
-const connectOption = {
-  useUnifiedTopology: true
-};
+const UserRepository = require('./repositories/user.repository');
+const UserBugRepository = require('./repositories/user_bug.repository');
+const UserFishRepository = require('./repositories/user_fish.repository');
+const UserFossilRepository = require('./repositories/user_fossil.repository');
+const UserArtRepository = require('./repositories/user_art.repository');
+const UserDeepSeaCreatureRepository = require('./repositories/user_deep_sea_creature.repository');
 
 let indexRouter = require('./routes/index');
 let bugRouter = require('./routes/bug');
@@ -43,39 +43,21 @@ app.use(passport.initialize());
 passport.use(new TwitterStrategy({
   consumerKey: process.env.TWITTER_CONSUMER_KEY,
   consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-  callbackURL: config.callbackURL
+  callbackURL: config.callbackUrl
 },
 async function(token, tokenSecret, profile, done) {
   let user = profile;
-  const client = await mongoClient.connect(url, connectOption);
-  const dbName = await client.db('items');
-  let userData = await dbName.collection('users').findOne({'user_id': user.id});
-  if (userData) {
-    user.hemisphere = userData.hemisphere;
-    user.bugs = userData.bugs;
-    user.fishes = userData.fishes;
-    if (!userData.fossils) {
-      userData.fossils = [];
-    }
-    if (!userData.arts) {
-      userData.arts = [];
-    }
-    if (!userData.deepSeaCreatures) {
-      userData.deepSeaCreatures = [];
-    }
-    user.fossils = userData.fossils;
-    user.arts = userData.arts;
-    user.deepSeaCreatures = userData.deepSeaCreatures;
+  let userInDb = await UserRepository.findByTwitterId(user.id);
+  if (!userInDb) {
+    userInDb = await UserRepository.create(user.id);
   }
-  if (!userData) {
-    let result = await dbName.collection('users').insertOne({'user_id': user.id, 'hemisphere': 'northern', 'bugs': [], 'fishes': [], 'fossils': [], 'arts': [], 'deepSeaCreatures': []});
-    user.hemisphere = 'northern';
-    user.bugs = [];
-    user.fishes = [];
-    user.fossils = [];
-    user.arts = [];
-    user.deepSeaCreatures = [];
-  }
+  user.userId = userInDb.dataValues.id;
+  user.hemisphere = userInDb.dataValues.hemisphere;
+  user.bugs = await UserBugRepository.findByUserId(userInDb.dataValues.id);
+  user.fishes = await UserFishRepository.findByUserId(userInDb.dataValues.id);
+  user.fossils = await UserFossilRepository.findByUserId(userInDb.dataValues.id);
+  user.arts = await UserArtRepository.findByUserId(userInDb.dataValues.id);
+  user.deepSeaCreatures = await UserDeepSeaCreatureRepository.findByUserId(userInDb.dataValues.id);
   return done(null, user);
 }
 ));

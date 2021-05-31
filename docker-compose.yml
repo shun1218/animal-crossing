@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  app:
+    image: node:12
+    container_name: app_ac
+    environment:
+      - TZ=Asia/Tokyo
+      - DEBUG=app:*
+      - NODE_ENV=${APP_ENV}
+    tty: true
+    ports:
+      - '80:3000'
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: npm start
+  
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_ac
+    environment: 
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+    - ./db/data:/var/lib/mysql
+    - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+    - 3306:3306

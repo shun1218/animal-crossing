@@ -3,14 +3,9 @@
 var express = require('express');
 var router = express.Router();
 const authentication = require('./authentication');
-const mongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 const fs = require('fs');
-
-const url = process.env.MONGODB_URL;
-const connectOption = {
-  useUnifiedTopology: true
-};
+const UserArtRepository = require('../repositories/user_art.repository');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -35,9 +30,19 @@ router.post('/update', async function(req, res, next) {
       arts.push(Number(req.body['arts[]']));
     }
   }
-  const client = await mongoClient.connect(url, connectOption);
-  const dbName = await client.db('items');
-  const results = await dbName.collection('users').updateOne({'user_id': user.id}, {$set: {'arts': arts}});
+  let currentArts = req.session.passport.user.arts;
+  let inserts = arts.filter(item =>
+    !currentArts.includes(item)  
+  );
+  let deletes = currentArts.filter(item =>
+    !arts.includes(item)
+  );
+  if (inserts.length > 0) {
+    await UserArtRepository.create(user.userId, inserts);
+  }
+  if (deletes.length > 0) {
+    await UserArtRepository.delete(user.userId, deletes);
+  }
   req.session.passport.user.arts = arts;
   return res.status(200).send({ message: '保存しました。' });
 });

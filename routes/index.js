@@ -4,13 +4,8 @@ var express = require('express');
 var router = express.Router();
 let passport = require('passport');
 const authentication = require('./authentication');
-const mongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
-
-const url = process.env.MONGODB_URL;
-const connectOption = {
-  useUnifiedTopology: true
-};
+const UserRepository = require('../repositories/user.repository');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,9 +18,7 @@ router.post('/update', async function(req, res, next) {
   if (!user) {
     return res.status(401).send({ error: 'ログインしてください。' });
   }
-  const client = await mongoClient.connect(url, connectOption);
-  const dbName = await client.db('items');
-  const results = await dbName.collection('users').updateOne({'user_id': user.id}, {$set: {'hemisphere': req.body.hemisphere}});
+  await UserRepository.updateHemisphere(user.userId, req.body.hemisphere);
   req.session.passport.user.hemisphere = req.body.hemisphere;
   return res.status(200).send({ message: '保存しました。' });
 });

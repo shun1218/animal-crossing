@@ -3,14 +3,9 @@
 var express = require('express');
 var router = express.Router();
 const authentication = require('./authentication');
-const mongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 const fs = require('fs');
-
-const url = process.env.MONGODB_URL;
-const connectOption = {
-  useUnifiedTopology: true
-};
+const UserFossilRepository = require('../repositories/user_fossil.repository');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -35,9 +30,19 @@ router.post('/update', async function(req, res, next) {
       fossils.push(Number(req.body['fossils[]']));
     }
   }
-  const client = await mongoClient.connect(url, connectOption);
-  const dbName = await client.db('items');
-  const results = await dbName.collection('users').updateOne({'user_id': user.id}, {$set: {'fossils': fossils}});
+  let currentFossils = req.session.passport.user.fossils;
+  let inserts = fossils.filter(item =>
+    !currentFossils.includes(item)  
+  );
+  let deletes = currentFossils.filter(item =>
+    !fossils.includes(item)
+  );
+  if (inserts.length > 0) {
+    await UserFossilRepository.create(user.userId, inserts);
+  }
+  if (deletes.length > 0) {
+    await UserFossilRepository.delete(user.userId, deletes);
+  }
   req.session.passport.user.fossils = fossils;
   return res.status(200).send({ message: '保存しました。' });
 });

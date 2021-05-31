@@ -3,14 +3,9 @@
 var express = require('express');
 var router = express.Router();
 const authentication = require('./authentication');
-const mongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 const fs = require('fs');
-
-const url = process.env.MONGODB_URL;
-const connectOption = {
-  useUnifiedTopology: true
-};
+const UserFishRepository = require('../repositories/user_fish.repository');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -34,9 +29,19 @@ router.post('/update', async function(req, res, next) {
       fishes.push(Number(req.body['fishes[]']));
     }
   }
-  const client = await mongoClient.connect(url, connectOption);
-  const dbName = await client.db('items');
-  const results = await dbName.collection('users').updateOne({'user_id': user.id}, {$set: {'fishes': fishes}});
+  let currentFishes = req.session.passport.user.fishes;
+  let inserts = fishes.filter(item =>
+    !currentFishes.includes(item)  
+  );
+  let deletes = currentFishes.filter(item =>
+    !fishes.includes(item)
+  );
+  if (inserts.length > 0) {
+    await UserFishRepository.create(user.userId, inserts);
+  }
+  if (deletes.length > 0) {
+    await UserFishRepository.delete(user.userId, deletes);
+  }
   req.session.passport.user.fishes = fishes;
   return res.status(200).send({ message: '保存しました。' });
 });

@@ -3,14 +3,9 @@
 var express = require('express');
 var router = express.Router();
 const authentication = require('./authentication');
-const mongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 const fs = require('fs');
-
-const url = process.env.MONGODB_URL;
-const connectOption = {
-  useUnifiedTopology: true
-};
+const UserBugRepository = require('../repositories/user_bug.repository');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -34,9 +29,19 @@ router.post('/update', async function(req, res, next) {
       bugs.push(Number(req.body['bugs[]']));
     }
   }
-  const client = await mongoClient.connect(url, connectOption);
-  const dbName = await client.db('items');
-  const results = await dbName.collection('users').updateOne({'user_id': user.id}, {$set: {'bugs': bugs}});
+  let currentBugs = req.session.passport.user.bugs;
+  let inserts = bugs.filter(item =>
+    !currentBugs.includes(item)  
+  );
+  let deletes = currentBugs.filter(item =>
+    !bugs.includes(item)
+  );
+  if (inserts.length > 0) {
+    await UserBugRepository.create(user.userId, inserts);
+  }
+  if (deletes.length > 0) {
+    await UserBugRepository.delete(user.userId, deletes);
+  }
   req.session.passport.user.bugs = bugs;
   return res.status(200).send({ message: '保存しました。' });
 });
